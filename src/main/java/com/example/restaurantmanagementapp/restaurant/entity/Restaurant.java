@@ -9,7 +9,11 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
+@ToString
 @Table(name = "restaurant")
 public class Restaurant implements Serializable {
     private static final long serialVersionUID = 1L;

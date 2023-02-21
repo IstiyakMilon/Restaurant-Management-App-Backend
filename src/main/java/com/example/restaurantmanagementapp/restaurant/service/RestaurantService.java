@@ -3,6 +3,7 @@ package com.example.restaurantmanagementapp.restaurant.service;
 import com.example.restaurantmanagementapp.restaurant.dto.RestaurantDto;
 import com.example.restaurantmanagementapp.restaurant.entity.Restaurant;
 import com.example.restaurantmanagementapp.restaurant.repository.RestaurantRepository;
+import com.example.restaurantmanagementapp.util.ExceptionHandlerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -19,14 +20,14 @@ import java.util.List;
 
 @Service
 @Transactional
-public class RestuarantService {
+public class RestaurantService {
 
-    private final Logger log = LoggerFactory.getLogger(RestuarantService.class);
+    private final Logger log = LoggerFactory.getLogger(RestaurantService.class);
 
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    public Restaurant saveRestaurant(RestaurantDto restaurantDto){
+    public Restaurant saveRestaurant(RestaurantDto restaurantDto) throws ExceptionHandlerUtil {
         log.debug("Request to save Restaurant : {}", restaurantDto);
         String user = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         Restaurant restaurant = new Restaurant();
