@@ -1,8 +1,8 @@
 package com.example.restaurantmanagementapp.jwt.service;
 
 
-import com.example.restaurantmanagementapp.jwt.dao.RoleDao;
-import com.example.restaurantmanagementapp.jwt.dao.UserDao;
+import com.example.restaurantmanagementapp.jwt.repository.RoleRepository;
+import com.example.restaurantmanagementapp.jwt.repository.UserRepository;
 import com.example.restaurantmanagementapp.jwt.entity.Role;
 import com.example.restaurantmanagementapp.jwt.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import java.util.Set;
 public class UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userDao;
 
     @Autowired
-    private RoleDao roleDao;
+    private RoleRepository roleDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -29,12 +29,12 @@ public class UserService {
         Role adminRole = new Role();
         adminRole.setRoleName("Admin");
         adminRole.setRoleDescription("Admin role");
-        roleDao.save(adminRole);
+//        roleDao.save(adminRole);
 
         Role userRole = new Role();
         userRole.setRoleName("User");
         userRole.setRoleDescription("Default role for newly created record");
-        roleDao.save(userRole);
+//        roleDao.save(userRole);
 
         User adminUser = new User();
         adminUser.setUserName("admin123");
@@ -44,7 +44,7 @@ public class UserService {
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
-        userDao.save(adminUser);
+//        userDao.save(adminUser);
 
     }
 
